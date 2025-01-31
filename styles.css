@@ -1,0 +1,337 @@
+/* Общие настройки */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    overflow-y: auto;
+}
+
+/* Контейнер для текста */
+.center {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Видео */
+video {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* Текст "LEARE" с видео внутри */
+h1 {
+    font-size: 150px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    background: url("video.mp4");
+    background-size: cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    mix-blend-mode: multiply;
+    -webkit-text-stroke: 3px rgba(255, 255, 255, 0.3);
+}
+
+/* Полукруг снизу */
+.half-circle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20vw; /* для десктопов */
+    height: 20vh;
+    background-color: #00CED1;
+    border-top-left-radius: 20vw;
+    border-top-right-radius: 20vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Текст на полукруге */
+.upload-text {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+/* Нижняя полоска с иконкой */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Кнопка копирования ссылки */
+.copy-link-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: relative;
+    bottom: 10px;
+}
+
+/* Контейнер для сетки фотографий */
+#image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 300px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Контейнер для фотографии */
+.image-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Фото внутри контейнера */
+.image-item {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Кнопка назад */
+button {
+    background-color: #00CED1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: #00b3b3;
+}
+
+/* Медиазапросы для разных экранов */
+@media (max-width: 320px) {
+    h1 {
+        font-size: 80px;
+    }
+    .half-circle {
+        width: 30vw;
+        height: 30vh;
+    }
+}
+
+@media (max-width: 375px) {
+    h1 {
+        font-size: 100px;
+    }
+    .half-circle {
+        width: 25vw;
+        height: 25vh;
+    }
+}
+
+@media (max-width: 414px) {
+    h1 {
+        font-size: 120px;
+    }
+    .half-circle {
+        width: 25vw;
+        height: 25vh;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 130px;
+    }
+    .half-circle {
+        width: 20vw;
+        height: 20vh;
+    }
+}
+/* Скрыть видео для мобильных устройств */
+.desktop-video {
+    display: block;
+}
+
+/* Скрыть видео для ПК */
+.mobile-video {
+    display: none;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+    /* Показываем только мобильное видео */
+    .desktop-video {
+        display: none;
+    }
+
+    .mobile-video {
+        display: block;
+    }
+}
+@media (max-width: 768px) {
+    .half-circle {
+        width: 50vw;  /* Увеличиваем только для мобильных устройств */
+        height: 15vh;  /* Немного увеличиваем высоту, чтобы он не был слишком вытянутым */
+    }
+}
+
+@media (max-width: 768px) {
+    .bottom-strip {
+        height: 70px; /* Увеличиваем высоту полоски снизу, изменяй это значение */
+        width: 100%;  /* Если нужно растянуть на всю ширину экрана */
+    }
+}
+@media (max-width: 768px) {
+    .emoji-copy {
+        font-size: 5rem; /* Увеличиваем размер эмодзи */
+    }
+}
+/* Полоска внизу экрана */
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Центрирует кнопку */
+    align-items: center;
+    background-color: #2b2a2a;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 20px; /* Отступ от левого края */
+}
+
+.logo {
+    width: 30px; /* Уменьшаем размер иконки */
+    height: 30px;
+    margin-right: 10px; /* Отступ между иконкой и текстом */
+}
+
+.text {
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Arial', sans-serif; /* Пример шрифта */
+}
+
+.copy-link-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+
+
+
+/* Разделяем левую и правую части полоски */
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Текст слева */
+.footer-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    margin-right: 10px;
+}
+
+/* Иконка перед текстом */
+.footer-icon {
+    width: 30px;
+    height: 30px;
+}
+
+/* Кнопка копирования */
+.copy-link-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 20px; /* Размещение кнопки копирования справа */
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .footer-text {
+        font-size: 1rem;
+    }
+
+    .footer-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+/* Скрыть видео для мобильных устройств */
+.desktop-video {
+    display: block;
+}
+
+/* Скрыть видео для ПК */
+.mobile-video {
+    display: none;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+    /* Показываем только мобильное видео */
+    .desktop-video {
+        display: none;
+    }
+
+    .mobile-video {
+        display: block;
+    }
+}
